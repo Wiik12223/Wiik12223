@@ -62,7 +62,7 @@ Sou estudante de Engenharia de Software e gosto de entender como as coisas funci
 
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/Wiik12223/Wiik12223/output/snake-commits.gif" alt="Snake roxa comendo commits públicos" width="100%" />
+<img src="https://raw.githubusercontent.com/Wiik12223/Wiik12223/output/github-snake-dark.svg" alt="Snake roxa comendo commits públicos" width="100%" />
 
 </div>
 
