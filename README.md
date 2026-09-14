@@ -58,6 +58,15 @@ Sou estudante de Engenharia de Software e gosto de entender como as coisas funci
 
 </div>
 
+## 🐍 Snake.exe — commit hunter
+
+<div align="center">
+
+<img src="./assets/snake-commits.gif" alt="Snake roxo comendo commits" width="100%" />
+
+</div>
+
+> cada commit alimenta a cobrinha. cada bug vira um novo boss. 👾
 ## 🚀 Projetos
 
 > Em breve: projetos selecionados, experimentos e quests concluídas.
