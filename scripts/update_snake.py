@@ -17,10 +17,20 @@ def get_public_contributions() -> list[list[int]]:
     url = f"https://github.com/users/{USERNAME}/contributions"
     request = urllib.request.Request(url, headers={"User-Agent": "github-profile-snake"})
     html = urllib.request.urlopen(request, timeout=30).read().decode("utf-8")
-    values = re.findall(r'<rect[^>]*data-count="(\d+)"[^>]*data-date="([^"]+)"', html)
-    if not values:
-        values = re.findall(r'data-count="(\d+)"[^>]*data-date="([^"]+)"', html)
-    by_date = {date: int(count) for count, date in values}
+    # GitHub has used both SVG rects (data-count) and calendar cells
+    # (data-level) for this page. Read attributes from either format.
+    by_date: dict[str, int] = {}
+    for tag in re.findall(r'<[^>]+>', html):
+        date_match = re.search(r'data-date="([^"]+)"', tag)
+        if not date_match:
+            continue
+        count_match = re.search(r'data-count="(\d+)"', tag)
+        level_match = re.search(r'data-level="([0-4])"', tag)
+        if count_match:
+            by_date[date_match.group(1)] = int(count_match.group(1))
+        elif level_match:
+            # The current calendar exposes intensity rather than exact count.
+            by_date[date_match.group(1)] = int(level_match.group(1))
     dates = sorted(by_date)
     if not dates:
         raise RuntimeError("Não foi possível ler o gráfico público de contribuições.")
