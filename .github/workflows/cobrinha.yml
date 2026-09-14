@@ -35,6 +35,8 @@ jobs:
     runs-on: ubuntu-latest
 
     timeout-minutes: 10
+    permissions:
+      contents: write
 
 
 
@@ -44,7 +46,7 @@ jobs:
 
       - name: Checkout Repository
 
-        uses: actions/checkout@v3
+        uses: actions/checkout@v5
 
 
 
@@ -82,7 +84,7 @@ jobs:
 
       - name: Deploy to Output Branch
 
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
 
         with:
 
